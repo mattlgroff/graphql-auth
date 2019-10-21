@@ -14,7 +14,7 @@ const apollo = new ApolloServer({
   context: context => {
     const token = context.req.headers.authorization || '';
     const user = jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      // Don't Authentication authGoogle Mutation Used For Getting Token
+      // Don't authenticate the authGoogle Mutation Used For Getting Token
       const isWhitelisted = context.req.body.query.includes('authGoogle');
 
       if (err && !isWhitelisted) {
